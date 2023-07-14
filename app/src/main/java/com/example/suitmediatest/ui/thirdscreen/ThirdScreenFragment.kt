@@ -9,11 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.suitmediatest.R
 import com.example.suitmediatest.databinding.FragmentSecondScreenBinding
 import com.example.suitmediatest.databinding.FragmentThirdScreenBinding
+import com.example.suitmediatest.ui.secondscreen.SecondScreenFragmentArgs
 import com.example.suitmediatest.ui.thirdscreen.adapter.LoadStateUserAdapter
 import com.example.suitmediatest.ui.thirdscreen.adapter.UserAdapter
 import com.example.suitmediatest.utils.ViewModelFactory
@@ -23,7 +25,7 @@ import kotlinx.coroutines.flow.onEach
 
 class ThirdScreenFragment : Fragment() {
 
-
+    private val navArgs : ThirdScreenFragmentArgs by navArgs()
     private var _binding : FragmentThirdScreenBinding? = null
     private val binding get() = _binding!!
     private lateinit var userAdapter: UserAdapter
@@ -53,7 +55,8 @@ class ThirdScreenFragment : Fragment() {
     }
 
     private fun setUserAdapter(){
-        userAdapter = UserAdapter()
+        val username = navArgs.username.toString()
+        userAdapter = UserAdapter(username)
         binding.apply {
             rvUser.adapter = userAdapter.withLoadStateFooter(footer = LoadStateUserAdapter{userAdapter.retry()})
             rvUser.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

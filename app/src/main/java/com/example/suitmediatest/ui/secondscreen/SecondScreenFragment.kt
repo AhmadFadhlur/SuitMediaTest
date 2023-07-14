@@ -29,28 +29,40 @@ class SecondScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setview()
+        setView()
         moveToThirdScreen()
     }
 
     private fun moveToThirdScreen(){
         binding.btnChooseUser.setOnClickListener{
-            findNavController().navigate(R.id.action_secondScreenFragment_to_thirdScreenFragment)
+            val action = SecondScreenFragmentDirections.actionSecondScreenFragmentToThirdScreenFragment(navArgs.userName)
+            findNavController().navigate(action)
+
         }
     }
 
 
-    private fun setview(){
+    private fun setView(){
         binding.apply {
-        val username = navArgs.userName
-        val sourceFrag = navArgs.SourceFrag
-            if (sourceFrag == "FragmentFirst"){
-                tvUser.text = username
+            val username = navArgs.userName
+            val userSelected = navArgs.usernameSelected
+            if (userSelected != "null"){
+                tvSelectedUser.text = userSelected
             }
-            if (sourceFrag == "FragmentThird"){
-                tvSelectedUser.text = username
-            }
+            tvUser.text = username
         }
     }
+
+//    private fun setviewUserSelected(){
+//        binding.apply {
+//        val username = navArgs.userName
+//            val Userselect = navArgs.usernameSelected
+//            when (sourceFrag) {
+//                "FragmentThird" -> {
+//                    tvSelectedUser.text = username
+//                }
+//            }
+//        }
+//    }
 
 }

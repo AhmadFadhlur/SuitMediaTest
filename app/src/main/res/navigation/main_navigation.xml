@@ -32,10 +32,13 @@
             app:nullable="true"
             android:defaultValue="userName" />
         <argument
-            android:name="SourceFrag"
+            android:name="usernameSelected"
             app:argType="string"
             app:nullable="true"
-            android:defaultValue="fragment" />
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_secondScreenFragment_to_firstScreenFragment"
+            app:destination="@id/firstScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/thirdScreenFragment"
@@ -45,5 +48,10 @@
         <action
             android:id="@+id/action_thirdScreenFragment_to_secondScreenFragment"
             app:destination="@id/secondScreenFragment" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
     </fragment>
 </navigation>

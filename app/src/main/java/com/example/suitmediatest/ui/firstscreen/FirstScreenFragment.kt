@@ -36,7 +36,7 @@ class FirstScreenFragment : Fragment() {
                 if(etName.text.toString().isEmpty()){
                     Toast.makeText(requireContext(), "Please fill Your Name", Toast.LENGTH_SHORT).show()
                 } else{
-                    val action = FirstScreenFragmentDirections.actionFirstScreenFragmentToSecondScreenFragment(etName.text.toString(), "FragmentFirst")
+                    val action = FirstScreenFragmentDirections.actionFirstScreenFragmentToSecondScreenFragment(etName.text.toString(), "null")
                     findNavController().navigate(action)
                 }
 
