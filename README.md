@@ -5,9 +5,11 @@ this project was made for intern test in Suitmedia
 ## Tech and library in Apps
 
 * Retrofit & Coroutines
-* Paging3
+* Paging3 with remote network
+* Dagger Hilt Injection
+* MVVM architecture
+* Binding Delegate
 * Navigation Component
-* Glide
+* Glide Url
 * Material Components
-* View Model & live data
-* Repository Injection
+
