@@ -8,24 +8,17 @@ import android.view.ViewGroup
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.suitmediatest.R
 import com.example.suitmediatest.databinding.FragmentFirstScreenBinding
 import com.example.suitmediatest.databinding.FragmentSecondScreenBinding
 
 
-class SecondScreenFragment : Fragment() {
+class SecondScreenFragment : Fragment(R.layout.fragment_second_screen) {
 
-    private var _binding : FragmentSecondScreenBinding? = null
-    private val binding get() = _binding!!
+    private val binding by viewBinding(FragmentSecondScreenBinding::bind)
     private val navArgs : SecondScreenFragmentArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentSecondScreenBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
