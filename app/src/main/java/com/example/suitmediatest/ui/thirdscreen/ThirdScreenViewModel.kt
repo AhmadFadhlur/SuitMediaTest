@@ -4,21 +4,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.example.suitmediatest.data.network.response.DataItem
 import com.example.suitmediatest.data.repository.DataRepository
-import com.example.suitmediatest.network.model.user.DataItem
+import com.example.suitmediatest.data.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ThirdScreenViewModel(private val repository: DataRepository) : ViewModel() {
+@HiltViewModel
+class ThirdScreenViewModel @Inject constructor (
+    private val userRepository: UserRepository) : ViewModel() {
 
     private var _listUser = MutableStateFlow<PagingData<DataItem>>(PagingData.empty())
-    val listUser = _listUser.asStateFlow()
+    val listUser : StateFlow<PagingData<DataItem>> = _listUser
 
-    fun getUser(){
-        repository.getUser().cachedIn(viewModelScope).onEach {
+    fun getUser() = viewModelScope.launch{
+        userRepository.getUserPaging().cachedIn(viewModelScope).collectLatest {
             _listUser.value = it
-        }.launchIn(viewModelScope)
+        }
     }
 }

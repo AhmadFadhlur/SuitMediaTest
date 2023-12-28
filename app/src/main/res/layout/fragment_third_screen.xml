@@ -40,7 +40,8 @@
         app:layout_constraintTop_toBottomOf="@id/div2"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="68dp"
-        tools:listitem="@layout/list_item_user" />
+        tools:listitem="@layout/list_item_user"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ProgressBar
         android:id="@+id/pb_thirdScreen"

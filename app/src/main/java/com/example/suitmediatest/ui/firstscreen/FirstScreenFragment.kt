@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.suitmediatest.databinding.FragmentFirstScreenBinding
 
@@ -27,7 +28,16 @@ class FirstScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         checkPalindrome()
         moveToSecondScreen()
+        onBackPressed()
 
+    }
+    private fun onBackPressed(){
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            })
     }
 
     private fun moveToSecondScreen(){

@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_firstScreenFragment_to_secondScreenFragment"
             app:destination="@id/secondScreenFragment"
+            app:launchSingleTop="false"
             app:popUpTo="@id/main_navigation"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,9 +24,7 @@
         tools:layout="@layout/fragment_second_screen" >
         <action
             android:id="@+id/action_secondScreenFragment_to_thirdScreenFragment"
-            app:destination="@id/thirdScreenFragment"
-            app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true" />
+            app:destination="@id/thirdScreenFragment" />
         <argument
             android:name="userName"
             app:argType="string"

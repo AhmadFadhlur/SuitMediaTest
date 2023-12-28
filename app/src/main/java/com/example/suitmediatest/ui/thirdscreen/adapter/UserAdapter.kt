@@ -3,15 +3,12 @@ package com.example.suitmediatest.ui.thirdscreen.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.suitmediatest.data.network.response.DataItem
 import com.example.suitmediatest.databinding.ListItemUserBinding
-import com.example.suitmediatest.network.model.user.DataItem
-import com.example.suitmediatest.ui.secondscreen.SecondScreenFragmentArgs
 import com.example.suitmediatest.ui.thirdscreen.ThirdScreenFragmentDirections
 
 class UserAdapter (var username: String): PagingDataAdapter<DataItem, UserAdapter.ViewHolder>(callback) {

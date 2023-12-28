@@ -1,4 +1,4 @@
-package com.example.suitmediatest.network.model.user
+package com.example.suitmediatest.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
